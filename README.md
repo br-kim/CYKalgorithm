@@ -1,5 +1,6 @@
 # CYKalgorithm
-membership problem
+membership problem  
+Chomsky 정규형인 문법에 의하여 생성되는 모든 언어에 대하여 소속성을 결정한다.
 Input  
 
 she eats a fish with a fork  
