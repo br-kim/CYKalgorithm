@@ -9,11 +9,11 @@ table = [[['' for col in range(1)] for row in range(len(w))] for depth in range(
 
 # calculate bottom row
 def cal_bottom(rules) :
-    result3 = []
+    result = []
     for rule in rules :
         if(substr[0] == rule[1]) :
-            result3.append([rule[1]]) 
-    return result3
+            result.append([rule[1]]) 
+    return result
 
 # product
 def product(a,b):
@@ -35,7 +35,6 @@ def check_rule(table,rules):
         for rule in rules :
             if(i == rule[1].split(' ')) and (rule[0] not in result) : # 생성 가능하고 중복되지 않을 경우
                 result.append(rule[0]) #  가능한 결과에 추가
-            
     return result
 
 def print_table(table):
@@ -59,11 +58,10 @@ for i in range(1,len(w)+1) : #이전에 저장한 테이블을 가지고 위의 
                     table[s_begin][s_end] = fill_table(s_begin,s_end,table) #반복문을 통해 해당되는 행렬을 전부 product 후 합해준다.
     for v in range(len(table)) : #한 줄을 다 생성하고 나서 문법으로 변환 가능한지 확인
         for j in range(v,len(table[v])):
-            # if i == 1: continue #첫번째는 문법 변환 x
-            result1 = check_rule(table,rules)
+            result = check_rule(table,rules)
             if v+i-1 == j : #바로 전에 채워진 테이블 줄에 대해서만 바꾼다
-                if result1 != [] : #생성 가능한 문법으로 바꿔준다
-                        table[v][j] = result1
+                if result != [] : #생성 가능한 문법으로 바꿔준다
+                        table[v][j] = result
                 else : #생성 가능한 문법이 없으므로 공집합
                         table[v][j] = []
 
